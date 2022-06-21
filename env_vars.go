@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-// GetEnvVars - /environments - Returns list of environment_variables under the accout
+// GetEnvVars - /environments - Returns list of environment_variables under the account
 func (c *Client) GetEnvVars() ([]EnvVar, error) {
 	req, err := http.NewRequest("GET", fmt.Sprintf("%s/environment_variables", c.HostURL), nil)
 	if err != nil {
@@ -17,9 +17,6 @@ func (c *Client) GetEnvVars() ([]EnvVar, error) {
 	if err != nil {
 		return nil, err
 	}
-
-	fmt.Printf(body)
-
 	env_vars := []EnvVar{}
 	err = json.Unmarshal(body, &env_vars)
 	if err != nil {
