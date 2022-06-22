@@ -2,7 +2,7 @@ package eyc
 
 import (
 	"fmt"
-	"io"
+	"io/ioutil"
 	"net/http"
 	"time"
 )
@@ -57,7 +57,7 @@ func (c *Client) doRequest(req *http.Request, authToken *string) ([]byte, error)
 	}
 	defer res.Body.Close()
 
-	body, err := io.ReadAll(res.Body)
+	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
 		return nil, err
 	}
