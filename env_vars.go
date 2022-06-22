@@ -20,7 +20,7 @@ func (c *Client) GetEnvVars() ([]EnvVar, error) {
 	body, err := c.doRequest(req, nil)
 	fmt.Printf("body: %v\n", body)
 
-	env_vars := []EnvVar{}
+	var env_vars map[string]interface{}
 
 	err = json.Unmarshal(body, &env_vars)
 	fmt.Printf("envVars: %v\n", env_vars)

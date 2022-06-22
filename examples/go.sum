@@ -1,0 +1,8 @@
+github.com/engineyard/terraform-eyc-sdk v0.0.0-20220621040034-04ec339e2506 h1:hupOdk2fAU0X0gD1iQgE1VcCsLPRIrCLR1YUZhcXdCQ=
+github.com/engineyard/terraform-eyc-sdk v0.0.0-20220621040034-04ec339e2506/go.mod h1:ExcN7V4DOGgVdaNh0C2sw1eknpzTnfZ+SZX3x3DEfrI=
+github.com/engineyard/terraform-eyc-sdk v0.0.0-20220621090559-4ab783a0cd22 h1:Ts8cF8t9CApTXJKurwfdQFWHbiIVLAedlTV87lykkpY=
+github.com/engineyard/terraform-eyc-sdk v0.0.0-20220621090559-4ab783a0cd22/go.mod h1:ExcN7V4DOGgVdaNh0C2sw1eknpzTnfZ+SZX3x3DEfrI=
+github.com/engineyard/terraform-eyc-sdk v0.0.0-20220622025117-2e0027a6a4f0 h1:xEJEPWokZRZbEyha9MyAZmx2viv7FnTaahWlCxsYJVY=
+github.com/engineyard/terraform-eyc-sdk v0.0.0-20220622025117-2e0027a6a4f0/go.mod h1:ExcN7V4DOGgVdaNh0C2sw1eknpzTnfZ+SZX3x3DEfrI=
+github.com/engineyard/terraform-eyc-sdk v0.0.0-20220622054002-57700b864124 h1:SRaUkVgDlknJLCK3XX8tDkpr2KkPazdFoZMeq7YlLsE=
+github.com/engineyard/terraform-eyc-sdk v0.0.0-20220622054002-57700b864124/go.mod h1:ExcN7V4DOGgVdaNh0C2sw1eknpzTnfZ+SZX3x3DEfrI=
