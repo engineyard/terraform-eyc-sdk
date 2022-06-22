@@ -7,7 +7,7 @@ import (
 )
 
 // GetEnvVars - /environments - Returns list of environment_variables under the account
-func (c *Client) GetEnvVars() ([]EnvVar, error) {
+func (c *Client) GetEnvVars() (EnvVars, error) {
 	fullURL := fmt.Sprintf("%s/environment_variables", c.HostURL)
 
 	fmt.Printf("fullURL: %v\n", fullURL)
@@ -21,7 +21,7 @@ func (c *Client) GetEnvVars() ([]EnvVar, error) {
 
 	fmt.Printf("body: %v\n", body)
 
-	env_vars := []EnvVars{}
+	env_vars := EnvVars{}
 
 	err = json.Unmarshal(body, &env_vars)
 	fmt.Printf("envVars: %v\n", env_vars)

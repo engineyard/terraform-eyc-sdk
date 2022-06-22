@@ -1,2 +1,4 @@
 github.com/engineyard/terraform-eyc-sdk v0.0.0-20220622075353-a84e7d8c78ba h1:S441nDWRrxndDXDGL0SSOhhAo6CBMZ6ujG4/S01lOhc=
 github.com/engineyard/terraform-eyc-sdk v0.0.0-20220622075353-a84e7d8c78ba/go.mod h1:ExcN7V4DOGgVdaNh0C2sw1eknpzTnfZ+SZX3x3DEfrI=
+github.com/engineyard/terraform-eyc-sdk v0.0.0-20220622080848-fa0dd7e8e30a h1:xjZpX/bLPVsfeNAHQMSyewZqcktSc97MxuJxY+mAwHU=
+github.com/engineyard/terraform-eyc-sdk v0.0.0-20220622080848-fa0dd7e8e30a/go.mod h1:ExcN7V4DOGgVdaNh0C2sw1eknpzTnfZ+SZX3x3DEfrI=
