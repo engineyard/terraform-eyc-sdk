@@ -13,7 +13,7 @@ func (c *Client) GetEnvVars() (EnvVars, error) {
 	fmt.Printf("fullURL: %v\n", fullURL)
 	req, err := http.NewRequest("GET", fullURL, nil)
 	if err != nil {
-		return nil, err
+		return {}, err
 	}
 	fmt.Printf("req: %v\n", req)
 
@@ -26,7 +26,7 @@ func (c *Client) GetEnvVars() (EnvVars, error) {
 	err = json.Unmarshal(body, &env_vars)
 	fmt.Printf("envVars: %v\n", env_vars)
 	if err != nil {
-		return nil, err
+		return {}, err
 	}
 
 	return env_vars, nil
