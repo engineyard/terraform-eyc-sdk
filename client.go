@@ -61,6 +61,7 @@ func (c *Client) doRequest(req *http.Request, authToken *string) ([]byte, error)
 	if err != nil {
 		return nil, err
 	}
+	fmt.Printf("body: %v", string(body))
 
 	if res.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("status: %d, body: %s", res.StatusCode, body)
