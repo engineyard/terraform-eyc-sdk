@@ -9,11 +9,12 @@ import (
 // GetEnvVars - /environments - Returns list of environment_variables under the account
 func (c *Client) GetEnvVars() (EnvVars, error) {
 	fullURL := fmt.Sprintf("%s/environment_variables", c.HostURL)
+	env_vars := EnvVars{}
 
 	fmt.Printf("fullURL: %v\n", fullURL)
 	req, err := http.NewRequest("GET", fullURL, nil)
 	if err != nil {
-		return {}, err
+		return env_vars, err
 	}
 	fmt.Printf("req: %v\n", req)
 
@@ -21,12 +22,10 @@ func (c *Client) GetEnvVars() (EnvVars, error) {
 
 	fmt.Printf("body: %v\n", body)
 
-	env_vars := EnvVars{}
-
 	err = json.Unmarshal(body, &env_vars)
 	fmt.Printf("envVars: %v\n", env_vars)
 	if err != nil {
-		return {}, err
+		return env_vars, err
 	}
 
 	return env_vars, nil
