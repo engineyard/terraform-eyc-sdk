@@ -22,7 +22,7 @@ func (c *Client) GetEnvVars() (EnvVars, error) {
 
 	fmt.Printf("body from GetEnvVars: %v\n", body)
 
-	err = json.Unmarshal(body, &env_vars)
+	err = json.Unmarshal(string(body), &env_vars)
 	fmt.Printf("envVars: %v\n", env_vars)
 	if err != nil {
 		return env_vars, err
