@@ -18,11 +18,12 @@ func (c *Client) GetEnvVars() ([]EnvVar, error) {
 	fmt.Printf("req: %v\n", req)
 
 	body, err := c.doRequest(req, nil)
+
 	fmt.Printf("body: %v\n", body)
 
 	env_vars := []EnvVar{}
 
-	err = json.Unmarshal(body, &env_vars)
+	err = json.Unmarshal(body["environment_variables"], &env_vars)
 	fmt.Printf("envVars: %v\n", env_vars)
 	if err != nil {
 		return nil, err
