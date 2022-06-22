@@ -7,7 +7,7 @@ import (
 )
 
 // GetEnvVars - /environments - Returns list of environment_variables under the account
-func (c *Client) GetEnvVars() (EnvVars, error) {
+func (c *Client) GetEnvVars() (map[string]interface{}, error) {
 	fullURL := fmt.Sprintf("%s/environment_variables", c.HostURL)
 	// env_vars := EnvVars{}
 	var env_vars map[string]interface{}
