@@ -21,9 +21,9 @@ func (c *Client) GetEnvVars() ([]EnvVar, error) {
 
 	fmt.Printf("body: %v\n", body)
 
-	env_vars := []EnvVar{}
+	env_vars := []EnvVars{}
 
-	err = json.Unmarshal(body["environment_variables"], &env_vars)
+	err = json.Unmarshal(body, &env_vars)
 	fmt.Printf("envVars: %v\n", env_vars)
 	if err != nil {
 		return nil, err
