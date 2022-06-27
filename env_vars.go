@@ -31,3 +31,29 @@ func (c *Client) GetEnvVars() (map[string]interface{}, error) {
 
 	return env_vars, nil
 }
+
+// GetEnvVarsByEnv - GET /environments/:environment_id/environment_variables - Returns list of environment_variables under an environment
+func (c *Client) GetEnvVarsByEnv(env_id int) (map[string]interface{}, error) {
+	fullURL := fmt.Sprintf("%s/environments/%s/environment_variables", c.HostURL, env_id)
+	// env_vars := EnvVars{}
+	var env_vars map[string]interface{}
+
+	fmt.Printf("fullURL: %v\n", fullURL)
+	req, err := http.NewRequest("GET", fullURL, nil)
+	if err != nil {
+		return env_vars, err
+	}
+	fmt.Printf("req: %v\n", req)
+
+	body, err := c.doRequest(req, nil)
+
+	fmt.Printf("body from GetEnvVarsByEnv: %v\n", body)
+
+	err = json.Unmarshal(body, &env_vars)
+	fmt.Printf("envVars: %v\n", env_vars)
+	if err != nil {
+		return env_vars, err
+	}
+
+	return env_vars, nil
+}
