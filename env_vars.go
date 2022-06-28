@@ -34,7 +34,7 @@ func (c *Client) GetEnvVars() (map[string]interface{}, error) {
 
 // GetEnvVarsByEnv - GET /environments/:environment_id/environment_variables - Returns list of environment_variables under an environment
 func (c *Client) GetEnvVarsByEnv(env_id int) (map[string]interface{}, error) {
-	fullURL := fmt.Sprintf("%s/environments/%s/environment_variables", c.HostURL, env_id)
+	fullURL := fmt.Sprintf("%s/environments/%d/environment_variables", c.HostURL, env_id)
 	// env_vars := EnvVars{}
 	var env_vars map[string]interface{}
 
