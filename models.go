@@ -13,9 +13,9 @@ type EnvVar struct {
 }
 
 type EnvVarParam struct {
-	Environment_variable EnvVarNameValue `json:"environment_variable`
-	Application_id       int             `json:"application_id`
-	Environment_id       int             `json:"environment_id`
+	Environment_variable EnvVarNameValue `json:"environment_variable"`
+	Application_id       int             `json:"application_id"`
+	Environment_id       int             `json:"environment_id"`
 }
 
 type EnvVarNameValue struct {
