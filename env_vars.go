@@ -60,7 +60,7 @@ func (c *Client) GetEnvVarsByEnv(env_id int) (map[string]interface{}, error) {
 }
 
 // CreateEnvVar - POST /environment_variables
-func (c *Client) CreateEnvVar(envVarParam EnvVarParam) (map[string]interface{}, error) {
+func (c *Client) CreateEnvVar(envVarParam EnvVarParam) (*EnvVar, error) {
 	rb, err := json.Marshal(envVarParam)
 
 	fullURL := fmt.Sprintf("%s/environment_variables", c.HostURL)
