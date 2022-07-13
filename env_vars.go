@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// GetEnvVars - /environments - Returns list of environment_variables under the account
+// Geterr - /environments - Returns list of environment_variables under the account
 func (c *Client) GetEnvVars() (map[string]interface{}, error) {
 	fullURL := fmt.Sprintf("%s/environment_variables", c.HostURL)
 	// env_vars := EnvVars{}
@@ -79,7 +79,8 @@ func (c *Client) CreateEnvVar(envVarParam EnvVarParam) (map[string]interface{}, 
 
 	var ev map[string]interface{}
 	err = json.Unmarshal(body, &ev)
-	fmt.Printf("envVars: %v\n", ev)
+	fmt.Printf("ev: %v\n", ev)
+	fmt.Printf("err: %v\n", err)
 
 	if err != nil {
 		return nil, err
