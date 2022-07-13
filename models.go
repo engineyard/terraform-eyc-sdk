@@ -1,28 +1,28 @@
 package eyc
 
 type EnvVar struct {
-	id               int    `json:"id"`
-	application      string `json:"application"`
-	application_id   int    `json:"application_id"`
-	application_name string `json:"application_name"`
-	environment      string `json:"environment"`
-	environment_id   int    `json:"environment_id`
-	environment_name string `json:"environment_name"`
-	name             string `json:"name"`
-	value            string `json:"value"`
+	ID               int    `json:"id"`
+	Application      string `json:"application"`
+	Application_id   int    `json:"application_id"`
+	Application_name string `json:"application_name"`
+	Environment      string `json:"environment"`
+	Environment_id   int    `json:"environment_id`
+	Environment_name string `json:"environment_name"`
+	Name             string `json:"name"`
+	Value            string `json:"value"`
 }
 
 type EnvVarParam struct {
-	environment_variable EnvVarNameValue `json:"environment_variable`
-	application_id       int             `json:"application_id`
-	environment_id       int             `json:"environment_id`
+	Environment_variable EnvVarNameValue `json:"environment_variable`
+	Application_id       int             `json:"application_id`
+	Environment_id       int             `json:"environment_id`
 }
 
 type EnvVarNameValue struct {
-	name  string `json:"name"`
-	value string `json:"value"`
+	Name  string `json:"name"`
+	Value string `json:"value"`
 }
 
 type EnvVars struct {
-	environment_variables []EnvVar `json:"environment_variables"`
+	Environment_variables []EnvVar `json:"environment_variables"`
 }
