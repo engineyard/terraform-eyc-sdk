@@ -78,12 +78,9 @@ func (c *Client) CreateEnvVar(envVarParam EnvVarParam) (map[string]interface{}, 
 	}
 
 	var ev map[string]interface{}
+
 	err = json.Unmarshal(body, &ev)
 	fmt.Printf("ev: %v\n", ev)
-	fmt.Printf("err: %v\n", err)
 
-	if err != nil {
-		return nil, err
-	}
-	return ev, nil
+	return ev, err
 }
