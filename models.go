@@ -6,7 +6,7 @@ type EnvVar struct {
 	Application_id   int    `json:"application_id"`
 	Application_name string `json:"application_name"`
 	Environment      string `json:"environment"`
-	Environment_id   int    `json:"environment_id`
+	Environment_id   int    `json:"environment_id"`
 	Environment_name string `json:"environment_name"`
 	Name             string `json:"name"`
 	Value            string `json:"value"`
