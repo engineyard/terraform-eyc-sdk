@@ -55,7 +55,7 @@ func (c *Client) GetEnvVarsByEnv(env_id int) (map[string]interface{}, error) {
 }
 
 // CreateEnvVar - POST /environment_variables
-func (c *Client) CreateEnvVar(envVarParam EnvVarParam) (*EnvVar, error) {
+func (c *Client) CreateEnvVar(envVarParam EnvVarParam) (map[string]interface{}, error) {
 	fmt.Printf("Under CreateENvVar")
 
 	rb, err := json.Marshal(envVarParam)
@@ -77,10 +77,10 @@ func (c *Client) CreateEnvVar(envVarParam EnvVarParam) (*EnvVar, error) {
 		return nil, err
 	}
 
-	ev := EnvVar{}
+	var ev map[string]interface{}
 	err = json.Unmarshal(body, &ev)
 	if err != nil {
 		return nil, err
 	}
-	return &ev, nil
+	return ev, nil
 }
