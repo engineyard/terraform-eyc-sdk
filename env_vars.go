@@ -56,11 +56,11 @@ func (c *Client) GetEnvVarsByEnv(env_id int) (map[string]interface{}, error) {
 
 // CreateEnvVar - POST /environment_variables
 func (c *Client) CreateEnvVar(envVarParam EnvVarParam) (map[string]EnvVar, error) {
-	fmt.Printf("Under CreateENvVar")
+	fmt.Printf("Under CreateENvVar\n")
 
 	rb, err := json.Marshal(envVarParam)
 
-	fmt.Printf("rb: %v", rb)
+	fmt.Printf("rb: %v\n", rb)
 
 	fullURL := fmt.Sprintf("%s/environment_variables", c.HostURL)
 
@@ -73,8 +73,12 @@ func (c *Client) CreateEnvVar(envVarParam EnvVarParam) (map[string]EnvVar, error
 	}
 
 	body, err := c.doRequest(req, nil)
+
+	fmt.Printf("body returned: %v\n", body)
+	fmt.Printf("err returned from doRequest: %v\n", err)
+
 	if err != nil {
-		return nil, err
+		return body, err
 	}
 
 	var ev map[string]EnvVar
