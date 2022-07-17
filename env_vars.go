@@ -54,6 +54,7 @@ func (c *Client) GetEnvVarsByEnv(env_id int) (map[string]interface{}, error) {
 	return env_vars, nil
 }
 
+// CRUD for each env var
 // CreateEnvVar - POST /environment_variables
 func (c *Client) CreateEnvVar(envVarParam EnvVarParam) (map[string]EnvVar, error) {
 	fmt.Printf("Under CreateENvVar\n")
@@ -68,6 +69,34 @@ func (c *Client) CreateEnvVar(envVarParam EnvVarParam) (map[string]EnvVar, error
 	fmt.Printf("strings.NewReader(string(rb)): %v\n", strings.NewReader(string(rb)))
 
 	req, err := http.NewRequest("POST", fullURL, strings.NewReader(string(rb)))
+	if err != nil {
+		return nil, err
+	}
+
+	body, err := c.doRequest(req, nil)
+
+	fmt.Printf("body returned: %v\n", body)
+	fmt.Printf("err returned from doRequest: %v\n", err)
+
+	if err != nil {
+		return nil, err
+	}
+
+	var ev map[string]EnvVar
+
+	err = json.Unmarshal(body, &ev)
+	// fmt.Printf("ev: %v\n", ev)
+
+	return ev, err
+}
+
+// GetEnvVarByID - GET /environment_variables/:id
+func (c *Client) GetEnvVarByID(id int) (map[string]EnvVar, error) {
+	fullURL := fmt.Sprintf("%s/environments/%d", c.HostURL, id)
+
+	fmt.Printf("fullURL: %v\n", fullURL)
+
+	req, err := http.NewRequest("GET", fullURL, nil)
 	if err != nil {
 		return nil, err
 	}
