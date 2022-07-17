@@ -118,6 +118,41 @@ func (c *Client) GetEnvVarByID(id int) (map[string]EnvVar, error) {
 	return ev, err
 }
 
+// UpdateEnvVar - PUT /environment_variables/:id
+func (c *Client) UpdateEnvVar(envVarParam EnvVarParam, id int) (map[string]EnvVar, error) {
+	fmt.Printf("Under UpdateEnvVar\n")
+
+	rb, err := json.Marshal(envVarParam)
+
+	fmt.Printf("rb: %v\n", rb)
+
+	fullURL := fmt.Sprintf("%s/environment_variables/%v", c.HostURL, id)
+
+	fmt.Printf("string(rb): %v\n", string(rb))
+	fmt.Printf("strings.NewReader(string(rb)): %v\n", strings.NewReader(string(rb)))
+
+	req, err := http.NewRequest("POST", fullURL, strings.NewReader(string(rb)))
+	if err != nil {
+		return nil, err
+	}
+
+	body, err := c.doRequest(req, nil)
+
+	fmt.Printf("body returned: %v\n", body)
+	fmt.Printf("err returned from doRequest: %v\n", err)
+
+	if err != nil {
+		return nil, err
+	}
+
+	var ev map[string]EnvVar
+
+	err = json.Unmarshal(body, &ev)
+	// fmt.Printf("ev: %v\n", ev)
+
+	return ev, err
+}
+
 // DeleteEnvVar - DELETE /environment_variables/:id
 func (c *Client) DeleteEnvVar(id int) (map[string]EnvVar, error) {
 	fmt.Printf("Under DeleteEnvVar\n")
