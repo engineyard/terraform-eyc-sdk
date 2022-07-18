@@ -92,7 +92,7 @@ func (c *Client) CreateEnvVar(envVarParam EnvVarParam) (map[string]EnvVar, error
 
 // GetEnvVarByID - GET /environment_variables/:id
 func (c *Client) GetEnvVarByID(id int) (map[string]EnvVar, error) {
-	fullURL := fmt.Sprintf("%s/environments/%d", c.HostURL, id)
+	fullURL := fmt.Sprintf("%s/environment_variables/%d", c.HostURL, id)
 
 	fmt.Printf("fullURL: %v\n", fullURL)
 
