@@ -131,7 +131,7 @@ func (c *Client) UpdateEnvVar(envVarParam EnvVarParam, id int) (map[string]EnvVa
 	fmt.Printf("string(rb): %v\n", string(rb))
 	fmt.Printf("strings.NewReader(string(rb)): %v\n", strings.NewReader(string(rb)))
 
-	req, err := http.NewRequest("POST", fullURL, strings.NewReader(string(rb)))
+	req, err := http.NewRequest("PUT", fullURL, strings.NewReader(string(rb)))
 	if err != nil {
 		return nil, err
 	}
