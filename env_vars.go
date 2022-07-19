@@ -56,7 +56,7 @@ func (c *Client) GetEnvVarsByEnv(env_id int) (map[string]interface{}, error) {
 
 // CRUD for each env var
 // CreateEnvVar - POST /environment_variables
-func (c *Client) CreateEnvVar(envVarParam EnvVarParam) (map[string]EnvVar, error) {
+func (c *Client) CreateEnvVar(envVarParam EnvVarParam) (map[string]interface{}, error) {
 	fmt.Printf("Under CreateENvVar\n")
 
 	rb, err := json.Marshal(envVarParam)
@@ -82,7 +82,7 @@ func (c *Client) CreateEnvVar(envVarParam EnvVarParam) (map[string]EnvVar, error
 		return nil, err
 	}
 
-	var ev map[string]EnvVar
+	var ev map[string]interface{}
 
 	err = json.Unmarshal(body, &ev)
 	// fmt.Printf("ev: %v\n", ev)
@@ -91,7 +91,7 @@ func (c *Client) CreateEnvVar(envVarParam EnvVarParam) (map[string]EnvVar, error
 }
 
 // GetEnvVarByID - GET /environment_variables/:id
-func (c *Client) GetEnvVarByID(id int) (map[string]EnvVar, error) {
+func (c *Client) GetEnvVarByID(id int) (map[string]interface{}, error) {
 	fullURL := fmt.Sprintf("%s/environment_variables/%d", c.HostURL, id)
 
 	fmt.Printf("fullURL: %v\n", fullURL)
@@ -110,7 +110,7 @@ func (c *Client) GetEnvVarByID(id int) (map[string]EnvVar, error) {
 		return nil, err
 	}
 
-	var ev map[string]EnvVar
+	var ev map[string]interface{}
 
 	err = json.Unmarshal(body, &ev)
 	// fmt.Printf("ev: %v\n", ev)
@@ -119,7 +119,7 @@ func (c *Client) GetEnvVarByID(id int) (map[string]EnvVar, error) {
 }
 
 // UpdateEnvVar - PUT /environment_variables/:id
-func (c *Client) UpdateEnvVar(envVarParam EnvVarParam, id int) (map[string]EnvVar, error) {
+func (c *Client) UpdateEnvVar(envVarParam EnvVarParam, id int) (map[string]interface{}, error) {
 	fmt.Printf("Under UpdateEnvVar\n")
 
 	rb, err := json.Marshal(envVarParam)
@@ -145,7 +145,7 @@ func (c *Client) UpdateEnvVar(envVarParam EnvVarParam, id int) (map[string]EnvVa
 		return nil, err
 	}
 
-	var ev map[string]EnvVar
+	var ev map[string]interface{}
 
 	err = json.Unmarshal(body, &ev)
 	// fmt.Printf("ev: %v\n", ev)
@@ -154,7 +154,7 @@ func (c *Client) UpdateEnvVar(envVarParam EnvVarParam, id int) (map[string]EnvVa
 }
 
 // DeleteEnvVar - DELETE /environment_variables/:id
-func (c *Client) DeleteEnvVar(id int) (map[string]EnvVar, error) {
+func (c *Client) DeleteEnvVar(id int) (map[string]interface{}, error) {
 	fmt.Printf("Under DeleteEnvVar\n")
 
 	fullURL := fmt.Sprintf("%s/environment_variables/%d", c.HostURL, id)
@@ -173,7 +173,7 @@ func (c *Client) DeleteEnvVar(id int) (map[string]EnvVar, error) {
 		return nil, err
 	}
 
-	var ev map[string]EnvVar
+	var ev map[string]interface{}
 
 	err = json.Unmarshal(body, &ev)
 	// fmt.Printf("ev: %v\n", ev)
