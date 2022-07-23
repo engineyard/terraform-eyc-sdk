@@ -47,8 +47,9 @@ func (c *Client) GetEnvVarsByEnv(env_id int) (map[string]interface{}, error) {
 
 	err = json.Unmarshal(body, &env_vars)
 	fmt.Printf("envVars: %v\n", env_vars)
+
 	if err != nil {
-		return env_vars, err
+		return nil, err
 	}
 
 	return env_vars, nil

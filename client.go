@@ -63,10 +63,11 @@ func (c *Client) doRequest(req *http.Request, authToken *string) ([]byte, error)
 	}
 	fmt.Printf("string(body): %v\n", string(body))
 	fmt.Printf("body from client.doRequest: %v\n", body)
+	fmt.Printf("res.StatusCode: %v\n", res.StatusCode)
 
-	// if res.StatusCode != http.StatusOK {
-	// 	return nil, fmt.Errorf("status: %d, body: %s", res.StatusCode, body)
-	// }
+	if res.StatusCode == 404 {
+		return nil, fmt.Errorf("status: %d, body: %s", res.StatusCode, body)
+	}
 
 	return body, err
 }
