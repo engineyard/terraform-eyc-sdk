@@ -3,7 +3,11 @@ package eyc
 import (
 	"fmt"
 	"io/ioutil"
+	"log"
 	"net/http"
+	"os"
+	"os/user"
+	"strings"
 	"time"
 )
 
@@ -29,9 +33,25 @@ func NewClient(host, token *string) (*Client, error) {
 		c.HostURL = *host
 	}
 
-	// If token not provided, return empty client
+	// If token not provided, fetch from ~/.ey-core
 	if token == nil {
-		return &c, nil
+		usr, err := user.Current()
+		if err != nil {
+			return &c, nil
+		}
+
+		eycore_path := fmt.Sprintf("%s/.ey-core", usr.HomeDir)
+		eycore_data, err := os.ReadFile(eycore_path)
+		if err != nil {
+			return &c, nil
+		}
+
+		eycore_token := strings.Split(string(eycore_data), ": ")[1]
+		token = &eycore_token
+
+		if token == nil {
+			return &c, nil
+		}
 	}
 	c.Token = *token
 
@@ -40,6 +60,9 @@ func NewClient(host, token *string) (*Client, error) {
 
 func (c *Client) doRequest(req *http.Request, authToken *string) ([]byte, error) {
 	token := c.Token
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	if authToken != nil {
 		token = *authToken
