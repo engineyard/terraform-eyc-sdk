@@ -3,7 +3,6 @@ package eyc
 import (
 	"fmt"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"os"
 	"os/user"
@@ -23,6 +22,8 @@ type Client struct {
 
 // NewClient -
 func NewClient(host, token *string) (*Client, error) {
+	fmt.Printf("inside new client")
+
 	c := Client{
 		HTTPClient: &http.Client{Timeout: 10 * time.Second},
 		// Default Hashicups URL
@@ -35,16 +36,21 @@ func NewClient(host, token *string) (*Client, error) {
 
 	// If token not provided, fetch from ~/.ey-core
 	if token == nil {
+		fmt.Printf("empty token")
+
 		usr, err := user.Current()
+		fmt.Printf("a")
 		if err != nil {
 			return &c, nil
 		}
+		fmt.Printf("b")
 
 		eycore_path := fmt.Sprintf("%s/.ey-core", usr.HomeDir)
 		eycore_data, err := os.ReadFile(eycore_path)
 		if err != nil {
 			return &c, nil
 		}
+		fmt.Printf("c")
 
 		eycore_token := strings.Split(string(eycore_data), ": ")[1]
 		token = &eycore_token
@@ -52,6 +58,8 @@ func NewClient(host, token *string) (*Client, error) {
 		if token == nil {
 			return &c, nil
 		}
+		fmt.Printf("d")
+
 	}
 	c.Token = *token
 
@@ -60,10 +68,6 @@ func NewClient(host, token *string) (*Client, error) {
 
 func (c *Client) doRequest(req *http.Request, authToken *string) ([]byte, error) {
 	token := c.Token
-	if err != nil {
-		log.Fatal(err)
-	}
-
 	if authToken != nil {
 		token = *authToken
 	}
