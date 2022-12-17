@@ -53,7 +53,10 @@ func NewClient(host, token *string) (*Client, error) {
 		fmt.Printf("c")
 
 		eycore_token := strings.Split(string(eycore_data), ": ")[1]
+		fmt.Printf("eycore_token %s", eycore_token)
 		eycore_token = strings.TrimSuffix(eycore_token, "\r\n")
+		fmt.Printf("eycore_token %s", eycore_token)
+		eycore_token = strings.ReplaceAll(eycore_token, " ", "")
 		token = &eycore_token
 
 		if token == nil {
