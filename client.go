@@ -22,7 +22,6 @@ type Client struct {
 
 // NewClient -
 func NewClient(host, token *string) (*Client, error) {
-	fmt.Printf("inside new client")
 
 	c := Client{
 		HTTPClient: &http.Client{Timeout: 10 * time.Second},
@@ -36,35 +35,25 @@ func NewClient(host, token *string) (*Client, error) {
 
 	// If token not provided, fetch from ~/.ey-core
 	if token == nil {
-		fmt.Printf("empty token")
 
 		usr, err := user.Current()
-		fmt.Printf("a")
 		if err != nil {
 			return &c, nil
 		}
-		fmt.Printf("b")
 
 		eycore_path := fmt.Sprintf("%s/.ey-core", usr.HomeDir)
 		eycore_data, err := os.ReadFile(eycore_path)
 		if err != nil {
 			return &c, nil
 		}
-		fmt.Printf("c")
 
 		eycore_token := strings.Split(string(eycore_data), ": ")[1]
-		fmt.Printf("eycore_token %s", eycore_token)
-		eycore_token = strings.TrimSuffix(eycore_token, "\r\n")
-		fmt.Printf("eycore_token %s", eycore_token)
 		eycore_token = strings.ReplaceAll(eycore_token, "\n", "")
-		fmt.Printf("eycore_token %s", eycore_token)
 		token = &eycore_token
 
 		if token == nil {
 			return &c, nil
 		}
-		fmt.Printf("d")
-
 	}
 	c.Token = *token
 
